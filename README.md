@@ -1,0 +1,1 @@
+# tsikl_otlicheniya_edinitsi_s_vektorami
