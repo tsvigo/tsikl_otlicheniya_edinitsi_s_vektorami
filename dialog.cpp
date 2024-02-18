@@ -11,7 +11,7 @@
 #include <iterator>
 using namespace std;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-std::vector<unsigned long long> list_sinapsov(10105);// = {};
+std::vector<long long> list_sinapsov(10105);// = {};
 std::vector<unsigned long long> list_neyronov(202);// = {};
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,9 +57,18 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
   try {
     std::fstream input(
         //  "/home/viktor/my_projects_qt_2/tsikl_otlicheniya_edinitsi_s_massivami_2/sinapsi.list"
-        "/home/viktor/my_projects_qt_2/"
-        "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_soprotivleniyami_2-"
-        "Desktop_Qt_5_12_12_GCC_64bit-Debug/sinapsi.txt");
+          
+//        "/home/viktor/my_projects_qt_2/"
+//        "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_soprotivleniyami_2-"
+//        "Desktop_Qt_5_12_12_GCC_64bit-Debug/sinapsi.txt"
+          
+          "/home/viktor/my_projects_qt_2/zapolnenie_0/0_sinapsi.txt"
+          
+          
+          );
+      
+    
+    
     if (!input) {
       std::cerr << "ERROR: Cannot open "
                    "'/home/viktor/my_projects_qt_2/"
@@ -161,13 +170,23 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
  // заведомо ошибка, выведем 201 нейрон
   std::cout << "201 нейрон = "  << list_neyronov[201] << std::endl;
   std::cout << "ошибка = "  << oshibka << std::endl;
-  // TODO: надо сделать функцию решения как раньше в классе нейронная сеть
+  // TODO: надо сделать функцию решения как раньше в классе нейронная сеть: вызываем когда надо... Или можно пока goto
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /// 
   ///  далее кнопка "Неправильно" запускает процесс подстройки сопротивлений синапсов
+  ///  а может без кнопки если заведомо известно что есть ошибка
+  /// /// Уменьшаем ... синапс на 1 и пересчитываем ошибку в смысле сначала снова функция решения а потом считаем ошибку.
+  ///  Видима нужна какая-то глобальная переменная хранящая текущий синапс... int tekuschiy_sinaps... Начинаем видимо с 0
+  ///  int tekuschiy_sinaps=0; на закрытие программы неплохо её в файл писать. А как насчёт действия - вычитать по 1 из синапсов или прибавлять?
+  /// Вроде вычитать. Значит берём синапс с индексом 0 и вычитаем из него 1
+  /// list_sinapsov[0]=list_sinapsov[0]-1;
+  /// Может проверить крайнее положение когда все синапсы по нулям?
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /// 
   /// 
+  /// 
+  ///  
 } // Dialog::Dialog(QWidget *parent)
 
 Dialog::~Dialog() { delete ui; }
