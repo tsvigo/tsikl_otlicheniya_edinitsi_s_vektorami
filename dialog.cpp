@@ -11,8 +11,8 @@
 #include <iterator>
 using namespace std;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-std::vector<long long> list_sinapsov(10105);// = {};
-std::vector<unsigned long long> list_neyronov(202);// = {};
+std::vector<unsigned long long> list_sinapsov;//(10105);// = {};
+std::vector<unsigned long long> list_neyronov;//(202);// = {};
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
@@ -25,25 +25,45 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
   ///массив:
   ///////////////////////////////////////////////////////////////////////////////////////////////
   try {
-    std::fstream input(
-        //  "/home/viktor/my_projects_qt_2/tsikl_otlicheniya_edinitsi_s_massivami_2/neyroni.list"
-        "/home/viktor/my_projects_qt_2/Funkciya_podachi_signalov_na_vhod/"
-        "neyroni_i_signal.txt");
-    if (!input) {
-      std::cerr << "ERROR: Cannot open "
-                   "'/home/viktor/my_projects_qt_2/"
-                   "Funkciya_podachi_signalov_na_vhod/neyroni_i_signal.txt'!"
-                << std::endl;
-      //  exit(1);
-    }
-    std::copy(std::istream_iterator<int>(input), std::istream_iterator<int>(),
-              std::back_inserter(list_neyronov));
-    //   std::cout << list_neyronov[3] << std::endl;
+//    std::fstream input(
+//        //  "/home/viktor/my_projects_qt_2/tsikl_otlicheniya_edinitsi_s_massivami_2/neyroni.list"
+//        "/home/viktor/my_projects_qt_2/Funkciya_podachi_signalov_na_vhod/neyroni_i_signal.txt");
+//    if (!input) {
+//      std::cerr << "ERROR: Cannot open "
+//                   "'/home/viktor/my_projects_qt_2/"
+//                   "Funkciya_podachi_signalov_na_vhod/neyroni_i_signal.txt'!"
+//                << std::endl;
+//      //  exit(1);
+//    }
+//    std::copy(std::istream_iterator<int>(input), std::istream_iterator<int>(),
+//              std::back_inserter(list_neyronov));
+//    std::cout << list_neyronov[3] << std::endl;
+    
+   unsigned long long n;    
+   // std::vector<int>list_neyronov;
+    ifstream file("/home/viktor/my_projects_qt_2/Funkciya_podachi_signalov_na_vhod/neyroni_i_signal.txt");
+        if (!file) {
+          std::cerr << "ERROR: Cannot open "
+                       "'/home/viktor/my_projects_qt_2/"
+                       "Funkciya_podachi_signalov_na_vhod/neyroni_i_signal.txt'!"
+                    << std::endl;
+          //  exit(1);
+        }
+    while (!file.eof()) 
+    {        file >> n;        list_neyronov.push_back(n);       // cout << n << endl;
+    } 
+        file.close();
+      //  std::cout << list_neyronov[1] << std::endl;
 
   } catch (const std::exception &ex) {
     std::cerr << "Exception: '" << ex.what() << "'!" << std::endl;
     //  exit(1);
   }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  for (int x=0;x<202 ;x++ ) {
+//       std::cout << list_neyronov[x] <<"("<< x << ")"<< std::endl;
+//  } 
+  
   //////////////////////////////// (1) ///// Конец считывания из файла нейронов
   ///в массив. ////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,67 +75,76 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
   ///массив:
   ///////////////////////////////////////////////////////////////////////
   try {
-    std::fstream input(
-        //  "/home/viktor/my_projects_qt_2/tsikl_otlicheniya_edinitsi_s_massivami_2/sinapsi.list"
+//    std::fstream input(
+//        //  "/home/viktor/my_projects_qt_2/tsikl_otlicheniya_edinitsi_s_massivami_2/sinapsi.list"
           
 //        "/home/viktor/my_projects_qt_2/"
 //        "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_soprotivleniyami_2-"
 //        "Desktop_Qt_5_12_12_GCC_64bit-Debug/sinapsi.txt"
           
-          "/home/viktor/my_projects_qt_2/zapolnenie_0/0_sinapsi.txt"
+//     //     "/home/viktor/my_projects_qt_2/zapolnenie_0/0_sinapsi.txt"
           
           
-          );
+//          );
       
     
     
-    if (!input) {
-      std::cerr << "ERROR: Cannot open "
-                   "'/home/viktor/my_projects_qt_2/"
-                   "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_"
-                   "soprotivleniyami_2-Desktop_Qt_5_12_12_GCC_64bit-Debug/"
-                   "sinapsi.txt'!"
-                << std::endl;
-      //  exit(1);
-    }
-    std::copy(std::istream_iterator<int>(input), std::istream_iterator<int>(),
-              std::back_inserter(list_sinapsov));
+//    if (!input) {
+//      std::cerr << "ERROR: Cannot open "
+//                   "'/home/viktor/my_projects_qt_2/"
+//                   "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_"
+//                   "soprotivleniyami_2-Desktop_Qt_5_12_12_GCC_64bit-Debug/"
+//                   "sinapsi.txt'!"
+//                << std::endl;
+//      //  exit(1);
+//    }
+//    std::copy(std::istream_iterator<int>(input), std::istream_iterator<int>(),
+//              std::back_inserter(list_sinapsov));
     //    std::cout << list_sinapsov[3] << std::endl;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+unsigned long long n;    
 
-  } catch (const std::exception &ex) {
+ifstream file2(
+    
+//    "/home/viktor/my_projects_qt_2/"
+//        "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_soprotivleniyami_2-"
+//        "Desktop_Qt_5_12_12_GCC_64bit-Debug/sinapsi.txt"
+               
+               "/home/viktor/my_projects_qt_2/zapolnenie_0/0_sinapsi.txt"
+               
+               );
+
+
+
+
+if (!file2) {
+    std::cerr << "ERROR: Cannot open "
+                 "'/home/viktor/my_projects_qt_2/"
+                 "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_soprotivleniyami_2-"
+                 "Desktop_Qt_5_12_12_GCC_64bit-Debug/sinapsi.txt'!"
+              << std::endl;
+    //  exit(1);
+}
+while (!file2.eof()) 
+{        file2 >> n;        list_sinapsov.push_back(n);       // cout << n << endl;
+} 
+    file2.close();
+ //   std::cout << list_sinapsov[1] << std::endl;
+
+  }
+  
+  catch (const std::exception &ex) {
     std::cerr << "Exception: '" << ex.what() << "'!" << std::endl;
     //  exit(1);
   }
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////// (3) Функция решения
-  ///funktsiya_resheniya
+  /////////////////////////////////////// (3) Функция решения   /// funktsiya_resheniya // NOTE: функция решения
+  //
   //////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //    for (int var = 101; var < 201; ++var) // это диапазон нейронов
-  //    {
-  //        // это для одного 101 нейрона:
-  //        for (int index_neyrona=1,index_sinapsa = 1;index_neyrona < 201,
-  //        index_sinapsa<10101 ;
-  //        ++index_neyrona,index_sinapsa=index_sinapsa+100)
-  //        // где то тут ошибка за диапазон выходит
-  //        {
-  //            // тут можно костыль поставить проверка что
-  //            Synaps::Peremennaia_Soprotivlenie_Sinapsa[index_sinapsa] не 0 if
-  //            (Synaps::Peremennaia_Soprotivlenie_Sinapsa[index_sinapsa]==0)
-  //            {
-  //                Synaps::Peremennaia_Soprotivlenie_Sinapsa[index_sinapsa]=1;
-  //            }
-  //            Neiron::Peremennaia_Zariad_Neirona[var]=Neiron::Peremennaia_Zariad_Neirona[var]+
-  //                            (Neiron::Peremennaia_Zariad_Neirona[index_neyrona]/
-  //                            Synaps::Peremennaia_Soprotivlenie_Sinapsa[index_sinapsa]);
-  //            // вот здесь генерируется исключение деление на 0
-  //        }
 
-  //    }
-  // нейроны второго ряда посчитаны
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  for (int var = 101; var < 201; ++var) // это диапазон нейронов
+  for (int var = 101; var < 201; ++var) // это диапазон нейронов // NOTE: функция решения
   {
     //        // это для одного 101 нейрона:
     for (int index_neyrona = 1, index_sinapsa = 1;
@@ -129,9 +158,21 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
       if (list_sinapsov[index_sinapsa] == 0) { // для избежания деления на 0
         list_sinapsov[index_sinapsa] = 1;
       }
-      list_neyronov[var] = list_neyronov[var] + (list_neyronov[index_neyrona] /
-                                                 list_sinapsov[index_sinapsa]);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
+//      list_neyronov[var] = list_neyronov[var] + (list_neyronov[index_neyrona] / list_sinapsov[index_sinapsa]);
+//      std::cout << list_neyronov[var] <<" = "<< list_neyronov[var] <<" + " << (list_neyronov[index_neyrona] / list_sinapsov[index_sinapsa])<<"\n";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
+    //  ui->textEdit->append (QString::number(list_neyronov[index_neyrona]));
+// тут надо вывести что получается
+    //  std::cout << list_neyronov[index_neyrona] <<"("<< index_neyrona << ")"<< std::endl;
+          //  std::cout << list_neyronov[var] <<"("<< var << ")"<< std::endl;
+     // std::cout << list_sinapsov[index_sinapsa] <<"("<< index_sinapsa << ")"<< std::endl;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
+      
     }
+   // ui->textEdit->append (QString::number(list_neyronov[var]));
+     //  std::cout << list_neyronov[var] <<"("<< var << ")"<< std::endl;
+  //   std::cout << list_neyronov[index_neyrona] <<"("<< index_neyrona << ")"<< std::endl;
   }
   // нейроны второго ряда посчитаны
   // тут надо досчитать поледний 201 нейрон.
@@ -145,6 +186,7 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
     list_neyronov[201] = list_neyronov[201] + (list_neyronov[index_neyrona] /
                                                list_sinapsov[index_sinapsa]);//  list_sinapsov[index_sinapsa]==0
   }
+   ui->textEdit->append (QString::number(list_neyronov[201]));
   /// проверяем ошибку:
   //      if (file.readLine().simplified().toULongLong (&ok, 10)<1073741824) {
   //      // меньше половины возможной генерации random
@@ -182,6 +224,7 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
   /// Вроде вычитать. Значит берём синапс с индексом 0 и вычитаем из него 1
   /// list_sinapsov[0]=list_sinapsov[0]-1;
   /// Может проверить крайнее положение когда все синапсы по нулям?
+  /// И все 0 и все максимальные минусы: -2147483647 вообще не уменьшают ошибку
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /// 
   /// 
