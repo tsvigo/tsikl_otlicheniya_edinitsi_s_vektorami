@@ -10,10 +10,12 @@
 #include <algorithm>
 #include <iterator>
 using namespace std;
+#include "klass_neyronnaya_sety.h"
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 std::vector<unsigned long long> list_sinapsov;//(10105);// = {};
 std::vector<unsigned long long> list_neyronov;//(202);// = {};
-
+//extern     long long oshibka;
+//long long Peremennaya_Oshibka;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
   ui->setupUi(this);
@@ -25,19 +27,7 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
   ///массив:
   ///////////////////////////////////////////////////////////////////////////////////////////////
   try {
-//    std::fstream input(
-//        //  "/home/viktor/my_projects_qt_2/tsikl_otlicheniya_edinitsi_s_massivami_2/neyroni.list"
-//        "/home/viktor/my_projects_qt_2/Funkciya_podachi_signalov_na_vhod/neyroni_i_signal.txt");
-//    if (!input) {
-//      std::cerr << "ERROR: Cannot open "
-//                   "'/home/viktor/my_projects_qt_2/"
-//                   "Funkciya_podachi_signalov_na_vhod/neyroni_i_signal.txt'!"
-//                << std::endl;
-//      //  exit(1);
-//    }
-//    std::copy(std::istream_iterator<int>(input), std::istream_iterator<int>(),
-//              std::back_inserter(list_neyronov));
-//    std::cout << list_neyronov[3] << std::endl;
+
     
    unsigned long long n;    
    // std::vector<int>list_neyronov;
@@ -60,57 +50,26 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
     //  exit(1);
   }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  for (int x=0;x<202 ;x++ ) {
-//       std::cout << list_neyronov[x] <<"("<< x << ")"<< std::endl;
-//  } 
+
   
-  //////////////////////////////// (1) ///// Конец считывания из файла нейронов
-  ///в массив. ////////////////////////////////////////////////////////////////
+  //////////////////////////////// (1) ///// Конец считывания из файла нейронов  ///в массив. ////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ///
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////// (2) //// Считывание из файла синапсов в
-  ///массив:
+  //////////////////////////////// (2) //// Считывание из файла синапсов в  ///массив:
   ///////////////////////////////////////////////////////////////////////
   try {
-//    std::fstream input(
-//        //  "/home/viktor/my_projects_qt_2/tsikl_otlicheniya_edinitsi_s_massivami_2/sinapsi.list"
-          
-//        "/home/viktor/my_projects_qt_2/"
-//        "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_soprotivleniyami_2-"
-//        "Desktop_Qt_5_12_12_GCC_64bit-Debug/sinapsi.txt"
-          
-//     //     "/home/viktor/my_projects_qt_2/zapolnenie_0/0_sinapsi.txt"
-          
-          
-//          );
-      
-    
-    
-//    if (!input) {
-//      std::cerr << "ERROR: Cannot open "
-//                   "'/home/viktor/my_projects_qt_2/"
-//                   "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_"
-//                   "soprotivleniyami_2-Desktop_Qt_5_12_12_GCC_64bit-Debug/"
-//                   "sinapsi.txt'!"
-//                << std::endl;
-//      //  exit(1);
-//    }
-//    std::copy(std::istream_iterator<int>(input), std::istream_iterator<int>(),
-//              std::back_inserter(list_sinapsov));
-    //    std::cout << list_sinapsov[3] << std::endl;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 unsigned long long n;    
 
 ifstream file2(
     
-//    "/home/viktor/my_projects_qt_2/"
-//        "build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_soprotivleniyami_2-"
-//        "Desktop_Qt_5_12_12_GCC_64bit-Debug/sinapsi.txt"
+ "/home/viktor/my_projects_qt_2/build-zapolnenie_sinapsov_sluchajnymi_nachalnymi_soprotivleniyami_2-Desktop_Qt_5_12_12_GCC_64bit-Debug/sinapsi.txt"
                
-               "/home/viktor/my_projects_qt_2/zapolnenie_0/0_sinapsi.txt"
+ //              "/home/viktor/my_projects_qt_2/zapolnenie_0/0_sinapsi.txt"
                
                );
 
@@ -142,77 +101,12 @@ while (!file2.eof())
   /////////////////////////////////////// (3) Функция решения   /// funktsiya_resheniya // NOTE: функция решения
   //
   //////////////////////////////////////////////////////////////////////
+  /// \brief Klass_Neyronnaya_sety::Funktciia_resheniya
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  for (int var = 101; var < 201; ++var) // это диапазон нейронов // NOTE: функция решения
-  {
-    //        // это для одного 101 нейрона:
-    for (int index_neyrona = 1, index_sinapsa = 1;
-         index_neyrona < 201, index_sinapsa < 10101;
-         ++index_neyrona, index_sinapsa = index_sinapsa + 100)
-    // выход за индекс?
-    {
-      //            // тут можно костыль поставить проверка что
-      //            Synaps::Peremennaia_Soprotivlenie_Sinapsa[index_sinapsa] не
-      //            0
-      if (list_sinapsov[index_sinapsa] == 0) { // для избежания деления на 0
-        list_sinapsov[index_sinapsa] = 1;
-      }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
-//      list_neyronov[var] = list_neyronov[var] + (list_neyronov[index_neyrona] / list_sinapsov[index_sinapsa]);
-//      std::cout << list_neyronov[var] <<" = "<< list_neyronov[var] <<" + " << (list_neyronov[index_neyrona] / list_sinapsov[index_sinapsa])<<"\n";
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
-    //  ui->textEdit->append (QString::number(list_neyronov[index_neyrona]));
-// тут надо вывести что получается
-    //  std::cout << list_neyronov[index_neyrona] <<"("<< index_neyrona << ")"<< std::endl;
-          //  std::cout << list_neyronov[var] <<"("<< var << ")"<< std::endl;
-     // std::cout << list_sinapsov[index_sinapsa] <<"("<< index_sinapsa << ")"<< std::endl;
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
-      
-    }
-   // ui->textEdit->append (QString::number(list_neyronov[var]));
-     //  std::cout << list_neyronov[var] <<"("<< var << ")"<< std::endl;
-  //   std::cout << list_neyronov[index_neyrona] <<"("<< index_neyrona << ")"<< std::endl;
-  }
-  // нейроны второго ряда посчитаны
-  // тут надо досчитать поледний 201 нейрон.
-  for (int index_neyrona = 101, index_sinapsa = 10001; index_neyrona < 201;
-       ++index_neyrona, ++index_sinapsa)
-  {
-      if (list_sinapsov[index_sinapsa] == 0) { // для избежания деления на 0
-          list_sinapsov[index_sinapsa] = 1;
-      }
-      
-    list_neyronov[201] = list_neyronov[201] + (list_neyronov[index_neyrona] /
-                                               list_sinapsov[index_sinapsa]);//  list_sinapsov[index_sinapsa]==0
-  }
-   ui->textEdit->append (QString::number(list_neyronov[201]));
-  /// проверяем ошибку:
-  //      if (file.readLine().simplified().toULongLong (&ok, 10)<1073741824) {
-  //      // меньше половины возможной генерации random
-  //          // программа считает это не 1
-  //          ui->label->setText("программа считает это не 1");
-  //      }
-  //      else {
-  //          ui->label->setText("программа считает это 1");
-  //      }
-  if (list_neyronov[201] < 
-      1073741824) { // меньше половины возможной генерации random
-    // программа считает это не 1
-    // тут надо показать что решила программа
-    ui->label->setText("программа считает это не 1"); 
-  } else {
-    // программа считает это 1
-    // тут надо показать что решила программа
-    ui->label->setText("программа считает это 1");
-  }
-  // вычисляем размер ошибки
- long long oshibka =   1073741824-list_neyronov[201] ; /// получается если oshibka
-  //   больше 0 то ошибка, если 0 или меньше то нет ошибки
- // заведомо ошибка, выведем 201 нейрон
-  std::cout << "201 нейрон = "  << list_neyronov[201] << std::endl;
-  std::cout << "ошибка = "  << oshibka << std::endl;
-  // TODO: надо сделать функцию решения как раньше в классе нейронная сеть: вызываем когда надо... Или можно пока goto
+  Klass_Neyronnaya_sety::Funktciia_resheniya(); // NOTE:  Klass_Neyronnaya_sety::Funktciia_resheniya();
+
+ // std::cout << "ошибка = "  << Klass_Neyronnaya_sety::Peremennaya_Oshibka << std::endl;
+
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /// 
@@ -229,7 +123,91 @@ while (!file2.eof())
   /// 
   /// 
   /// 
-  ///  
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// 
+ // Тут нужна функция изменения синапса. Точнее уменьшения синапса на 1. Надо ли границу проверять?
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+// list_sinapsov[0]=list_sinapsov[0]-1; // первый изначальный синапс под индексом 0 = 1740539749
+//// std::cout << "ошибка = "  << "list_sinapsov[0] = "<< list_sinapsov[0] << std::endl;
+// // снова решаем - то есть получаем ошибку
+//  Klass_Neyronnaya_sety::Funktciia_resheniya();
+// // снова проверяем ошибку
+//  int index_sinapsa=1;
+//a:  if (Klass_Neyronnaya_sety::Peremennaya_Oshibka>0 && index_sinapsa<10103 )
+//  {
+//      list_sinapsov[index_sinapsa]=list_sinapsov[index_sinapsa]-1;
+//      index_sinapsa=index_sinapsa+1;
+//      Klass_Neyronnaya_sety::Funktciia_resheniya();
+//      goto a;
+//  }
+//////////// или: //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  int index_sinapsa;
+  b: // если  последний синапс дошёл до минимума то выходим из goto b
+    if (list_sinapsov[10101]==0) goto c;
+  for ( index_sinapsa=0; // начинаем с первого синапса
+           Klass_Neyronnaya_sety::Peremennaya_Oshibka>0 ; // проверяем ошибку
+           index_sinapsa=index_sinapsa+1) // продвигаем индекс синапса на 1
+  {
+          // возможно тут условие проверить синапс на минимальное значение
+      if (list_sinapsov[index_sinapsa]>0)
+      list_sinapsov[index_sinapsa]=list_sinapsov[index_sinapsa]-1; // сегментация фаулт: index_sinapsa=16894
+         Klass_Neyronnaya_sety::Funktciia_resheniya();
+      // тут видимо надо проверку выхода за нижнюю границу величины синапса
+         // первый раз вычел по 1
+    }
+  // сюда выходим либо если прошли до последнего 10101 либо если ошибка пропала
+    // 1. Если прошли до 10101 но ошибка не пропала то обнуляем индекс синапса и идём goto b
+    if (index_sinapsa==10101 && Klass_Neyronnaya_sety::Peremennaya_Oshibka>0 )
+        goto b;
+    // 2. Если ошибка пропала но не дошли до 10101 надо записать синапсы в файл
+    if (Klass_Neyronnaya_sety::Peremennaya_Oshibka<=0)
+    {
+        
+    }
+        // записать вектор в файл // TODO: записать вектор в файл и записать что ошибка пропала и идти goto c;
+    // 3. И ошибка и пропала и довычитались до того что все синапсы приняли минимальные значения (последний 10101 синапс стал минимальным)
+    // unsigned long long какое минимум?
+    
+ //   index_sinapsa=0;
+    // если не все синапсы достигли минимального значения и/или ошибка есть (больше 0)
+    // если 1) синапс с индексом 101 (последний ) не достиг минимального значения
+    // если 2) Klass_Neyronnaya_sety::Peremennaya_Oshibka>0 ? 4 случайных сочетания? // NOTE: останов.
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+// Но не тут то было тут я повычитаю из каждого синапса по 1 и надо снова переходить к первому синапсу с индексом 0. То есть поставить условие
+// что когда индекс синапса становится последним (10101) он обнуляется
+    // Accessing last element 
+    int n = list_sinapsov.size();
+  cout << list_sinapsov[n - 1]<< "\n" << "индекс последнего элемента = " << n-1 << endl;
+  //  индекс последнего элемента = 10101
+  c:  if (list_sinapsov[10101]==0)
+      {
+           cout  << "Все синапсы имеют минимальные значения."  << endl;
+      }    
+      // тут написать что все синапсы имеют минимальные значения
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 } // Dialog::Dialog(QWidget *parent)
 
 Dialog::~Dialog() { delete ui; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
